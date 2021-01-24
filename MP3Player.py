@@ -22,10 +22,10 @@ def play():
 def stop():
     pygame.mixer_music.stop()
 
- 
-#volumeGET = pygame.mixer_music.get_volume()
-#print(volumeGET)
 
+def volumeControl(val):
+    volume = int(val)/100
+    pygame.mixer_music.set_volume(volume)
 
 
 
@@ -38,10 +38,8 @@ stopButton.grid(row=3, column=1)
 songFile = Button(root, text="Pick a song", command=songpicker, padx=20, pady=25)
 songFile.grid(row=3, column=2)
 
-volumeUP = Button(root, text="+", padx=20, pady=15)
-volumeUP.grid(row=4, column=2)
+scale = Scale(root, from_=0, to=100, orient=HORIZONTAL, command= volumeControl)
+scale.grid(row=4, column= 1)
 
-volumeDOWN = Button(root, text="-", padx=20, pady=15)
-volumeDOWN.grid(row=4, column=0)
 
 root.mainloop()
